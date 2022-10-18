@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  mmdetection:
+    build: .
+    ports:
+      - 8888:8888
+    volumes:
+      - ./checkpoints/:/app/checkpoints
+      - ./datasets/:/app/datasets
+      - ./main.ipynb:/app/main.ipynb
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
